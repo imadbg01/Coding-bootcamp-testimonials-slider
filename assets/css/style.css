@@ -1,0 +1,293 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap");
+
+:root {
+  --DarkBlue: hsl(240, 38%, 20%);
+  --GrayishBlue: hsl(240, 18%, 66%);
+  --white: hsl(100, 0%, 100%);
+}
+
+/* default */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  outline: 0;
+  display: inline-block;
+}
+
+/* setup body */
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  min-height: 100vh;
+  font-weight: 500;
+  background-color: var(--white);
+  color: var(--DarkBlue);
+  background-image: url(../images/pattern-curve.svg);
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  display: grid;
+  place-items: center;
+}
+
+/* Hiding class, making content visible only to screen readers but not visually */
+/* "sr" meaning "screen-reader" */
+/*  https://css-tricks.com/inclusively-hidden  */
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* main */
+
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../images/pattern-bg.svg);
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: top;
+  background-size: 100%;
+  padding-block: 2rem;
+}
+
+.slider-wrapper {
+  width: calc(100vw - 10%);
+  /* height: calc(100vh - 5rem); */
+  margin-inline: auto;
+  padding-inline: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-container {
+  display: flex;
+  padding: 1rem 0;
+}
+
+.slider-list {
+  list-style: none;
+  display: grid;
+  grid-template: "slider";
+  place-content: center;
+  place-items: center;
+}
+.slide {
+  grid-area: slider;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column-reverse;
+  gap: 1em;
+  background-color: transparent;
+  visibility: hidden;
+  opacity: 0;
+  transition: transform 500ms ease-in-out, visibility 200ms ease-in,
+    opacity 400ms ease-in;
+}
+.slide[data-show="true"] {
+  transform: translateX(0);
+  visibility: visible;
+  opacity: 1;
+}
+
+.slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding-inline: 2.2rem;
+  padding-block: 1.1rem;
+  text-align: center;
+  z-index: 55;
+  background-color: var(--white);
+}
+
+.slide-description {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  max-width: 50ch;
+  padding-block-start: 3rem;
+  position: relative;
+  font-weight: 300;
+}
+
+.slide-description::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  height: 5rem;
+  aspect-ratio: 1;
+  background-image: url(../images/pattern-quotes.svg);
+  background-repeat: no-repeat;
+}
+.slide-author {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--GrayishBlue);
+  font-size: 0.85rem;
+}
+
+.slide-author a {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--DarkBlue);
+  transition: opacity 200ms ease-in-out;
+}
+.slide-author a:hover {
+  opacity: 0.75;
+}
+
+div[data-image] {
+  object-fit: cover;
+  object-position: center;
+  position: relative;
+}
+
+div[data-image] img {
+  aspect-ratio: 1;
+  width: 75%;
+  margin-inline: auto;
+}
+
+.slider-ctrls {
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3rem;
+  width: 5rem;
+  z-index: 101;
+  margin-block-end: -1.7rem;
+  border-radius: 2rem;
+  padding: 0.1em 0.2em;
+  background-color: var(--white);
+  border: 0.2em solid var(--GrayishBlue);
+  z-index: 10101;
+}
+
+.slide-ctrl {
+  cursor: pointer;
+  width: 100%;
+  padding: 0.3em;
+  transform: scale(0.65);
+  background-color: transparent;
+  border: 0.2em solid transparent;
+  transition: all 250ms ease-out;
+}
+.slide-ctrl[data-nextBtn] {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+.slide-ctrl[data-prevBtn] {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+.slide-ctrl:hover,
+.slide-ctrl:focus {
+  border: 2px solid var(--GrayishBlue);
+  transform: scale(0.75);
+}
+
+/* Desktop version */
+
+@media (min-width: 45em) {
+  body {
+    background-position: left bottom;
+    background-size: 120%;
+  }
+  .slide {
+    flex-direction: row;
+    gap: 0;
+  }
+  #main {
+    background-position-x: right;
+    background-position-y: center;
+    background-size: 50%;
+    padding-block: 4rem;
+  }
+
+  .slide-content {
+    align-items: flex-start;
+    gap: 2rem;
+    padding-inline-start: 2.2rem;
+    padding-block: 2.2rem;
+    padding-inline-end: 0;
+    text-align: start;
+    margin-inline-end: -10%;
+    background-color: transparent;
+  }
+
+  .slide-description {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    max-width: 50ch;
+    padding-block: 2rem;
+  }
+
+  .slide-description::before {
+    left: 10%;
+    height: 6rem;
+  }
+  .slide-author {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--GrayishBlue);
+    font-size: 0.85rem;
+  }
+
+  div[data-image] {
+    object-fit: cover;
+    object-position: center;
+    position: relative;
+  }
+
+  div[data-image] img {
+    width: 80%;
+  }
+
+  .slider-ctrls {
+    align-items: center;
+    margin-block-end: -1rem;
+    padding: 0.2em 0.3em;
+  }
+
+  .slide-ctrl {
+    padding: 0.4em;
+  }
+}

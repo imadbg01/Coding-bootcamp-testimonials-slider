@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="solution to Coding BootCamp Testimonials Slider frontend Mentor challenge  "
+    />
+    <meta name="author" content="imad boudguigue" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Coding BootCamp Testimonials Slider</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="./js/script.js" defer></script>
+  </head>
+  <body>
+    <main id="main">
+      <section class="slider-wrapper" aria-labelledby="Testimonials">
+        <h1 class="sr-only" id="Testimonials">Coding BootCamp Testimonials</h1>
+        <div
+          class="slider-container"
+          role="region"
+          tabindex="0"
+          aria-label="coding bookcamp testimonials"
+        >
+          <ol class="slider-list">
+            <li class="slide" data-show="true">
+              <div class="slide-content">
+                <p class="slide-description">
+                  “ I’ve been interested in coding for a while but never taken
+                  the jump, until now. I couldn’t recommend this course enough.
+                  I’m now in the job of my dreams and so excited about the
+                  future. ”
+                </p>
+                <p class="slide-author">
+                  <a href="#">Tanya Sinclair</a>UX Engineer
+                </p>
+              </div>
+              <div data-image="Tanya">
+                <img src="./assets/images/image-tanya.jpg" alt="" />
+                <div class="slider-ctrls">
+                  <button
+                    class="slide-ctrl"
+                    data-prevBtn=""
+                    type="button"
+                    title="preview slide"
+                  >
+                    <span class="sr-only">preview slide</span
+                    ><img src="./assets/images/icon-prev.svg" alt="" />
+                  </button>
+                  <button
+                    class="slide-ctrl"
+                    data-nextBtn
+                    type="button"
+                    title="next-slide"
+                    autofocus
+                  >
+                    <span class="sr-only">next slide</span
+                    ><img src="./assets/images/icon-next.svg" alt="" />
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li class="slide" data-show="false">
+              <div class="slide-content">
+                <p class="slide-description">
+                  “ If you want to lay the best foundation possible I’d
+                  recommend taking this course. The depth the instructors go
+                  into is incredible. I now feel so confident about starting up
+                  as a professional developer. ”
+                </p>
+                <p class="slide-author">
+                  <a href="#">John Tarkpor</a>Junior Front-end Developer
+                </p>
+              </div>
+              <div data-image="John">
+                <img src="./assets/images/image-john.jpg" alt="" />
+                <div class="slider-ctrls">
+                  <button
+                    class="slide-ctrl"
+                    data-prevBtn
+                    type="button"
+                    title="preview slide"
+                  >
+                    <span class="sr-only">preview slide</span
+                    ><img src="./assets/images/icon-prev.svg" alt="" />
+                  </button>
+                  <button
+                    class="slide-ctrl"
+                    data-nextBtn
+                    type="button"
+                    title="next-slide"
+                  >
+                    <span class="sr-only">next slide</span
+                    ><img src="./assets/images/icon-next.svg" alt="" />
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
